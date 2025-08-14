@@ -521,6 +521,31 @@ input {
   width: 25px;
 }
 
+
+.login-btn {
+  background-color: #121212;   /* same dark pill background */
+  color: #fff;                 /* white text */
+  font-size: 14px;             /* same font size */
+  font-weight: 00;            /* semi-bold like others */
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  */
+  padding: 8px 18px;           /* pill padding */
+  border: none;
+  border-radius: 999px;        /* pill shape */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #2a2a2a;   /* same hover effect */
+}
+
+.login-btn:active {
+  transform: scale(0.95);       /* click feedback */
+}
+
 @media (max-width: 927px) {
   .current-song {
     width: 200px;
@@ -577,16 +602,9 @@ input {
   border-radius: 12px;
   margin-bottom: 3px;
 }
-.login {
-  background-color: white;
-  color: black;
-  width: 60px;
-  height: 40px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
+
 body.bright-mode {
   background-color: white;
   color: black;

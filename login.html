@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title>Login | Signup</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="background">
+    <!-- Floating music notes/logos -->
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
+    <div class="note">🎼</div>
+    <div class="note">🎧</div>
+    <div class="note">🎤</div>
+
+    <div class="tagline">
+        STREAM THE BEAT<br>
+        LIVE THE MUSIC <br>
+        FEEL THE VIBE
+    </div>
+
+  </div>
+
+  <div class="auth-container">
+    <div class="auth-toggle">
+      <button id="show-login" class="active">Login</button>
+      <button id="show-signup">Sign Up</button>
+    </div>
+
+    <form id="login-form" class="auth-form">
+  <h2>Welcome Back <br><span class="sub-text">Login to Continue</span></h2>
+
+  <input type="email" placeholder="Email" required />
+
+  <!-- Password + Eye Toggle -->
+  <div class="password-container">
+    <input type="password" id="password" placeholder="Password" required />
+    <i class="fa fa-eye" id="showHidePassword"></i>
+  </div>
+
+
+  <button type="submit">Log In</button>
+  <button class="google-btn">
+      <svg viewBox="0 0 44 50" xmlns="http://www.w3.org/2000/svg">
+    <!-- Yellow -->
+    <path fill="#FFC107"
+      d="M43.61 20.083H42V20H24v8h11.303C33.652 32.657 29.223 36 24 36
+         c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.951 3.049l5.657-5.657C33.64 6.053 29.084 4 24 4
+         12.955 4 4 12.955 4 24s8.955 20 20 20c11.045 0 20-8.955 20-20 0-1.341-.139-2.65-.39-3.917z"/>
+    <!-- Red -->
+    <path fill="#FF3D00"
+      d="M6.306 14.691l6.571 4.817C14.6 15.174 18.936 12 24 12
+         c3.059 0 5.842 1.154 7.951 3.049l5.657-5.657C33.64 6.053 29.084 4 24 4
+         16.318 4 9.656 8.337 6.306 14.691z"/>
+    <!-- Green -->
+    <path fill="#4CAF50"
+      d="M24 44c5.086 0 9.646-1.953 13.149-5.132l-6.07-4.964C29.01 35.91 26.663 37 24 37
+         c-5.2 0-9.617-3.33-11.28-7.98l-6.5 5.02C9.5 40 16 44 24 44z"/>
+    <!-- Blue -->
+    <path fill="#1976D2"
+      d="M43.611 20.083H42V20H24v8h11.303c-.9 2.5-2.5 4.5-4.224 5.904l6.07 4.964C39.91 35.862 44 30.5 44 24
+         c0-1.341-.139-2.65-.389-3.917z"/>
+  </svg>
+  Continue with Google</button>
+    </form>
+
+   <form id="signup-form" class="auth-form hidden">
+  <h2>Join the Rhythm <br><span class="sub-text">Register Here</span></h2>
+
+        <form id="signup-form">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+
+        <!-- Password -->
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Password" required />
+            <i id="showHidePassword" class="fa fa-eye"></i>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="password-container">
+            <input type="password" id="confirm-password" placeholder="Confirm Password" required />
+            <i id="showHideConfirmPassword" class="fa fa-eye"></i>
+        </div>
+
+        <p id="error-msg" style="color:red; display:none;">Passwords do not match!</p>
+        <button type="submit">Register</button>
+
+        </form>
+  </div>
+
+<script>
+    // ------------------ Get all elements first ------------------
+const showLogin = document.getElementById("show-login");
+const showSignup = document.getElementById("show-signup");
+const loginForm = document.getElementById("login-form");
+const signupForm = document.getElementById("signup-form");
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const showHidePassword = document.getElementById('showHidePassword');
+const showHideConfirmPassword = document.getElementById('showHideConfirmPassword');
+const loginPassword = document.getElementById('login-password');
+const showHideLoginPassword = document.getElementById('showHideLoginPassword');
+const errorMsg = document.getElementById('error-msg');
+
+// ------------------ Toggle between login and signup ------------------
+showLogin.addEventListener("click", () => {
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+    showLogin.classList.add("active");
+    showSignup.classList.remove("active");
+});
+
+showSignup.addEventListener("click", () => {
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+    showSignup.classList.add("active");
+    showLogin.classList.remove("active");
+});
+
+// ------------------ Show/Hide Password ------------------
+showHidePassword.addEventListener('click', () => {
+    password.type = password.type === 'password' ? 'text' : 'password';
+    showHidePassword.classList.toggle('fa-eye-slash');
+});
+
+showHideConfirmPassword.addEventListener('click', () => {
+    confirmPassword.type = confirmPassword.type === 'password' ? 'text' : 'password';
+    showHideConfirmPassword.classList.toggle('fa-eye-slash');
+});
+
+showHideLoginPassword.addEventListener('click', () => {
+    loginPassword.type = loginPassword.type === 'password' ? 'text' : 'password';
+    showHideLoginPassword.classList.toggle('fa-eye-slash');
+});
+
+// ------------------ Password Confirmation & Redirect ------------------
+
+// Function to strictly check passwords
+function checkPasswords() {
+    if (confirmPassword.value.trim() !== password.value.trim()) {
+        errorMsg.style.display = 'block';
+        return false;
+    } else {
+        errorMsg.style.display = 'none';
+        return true;
+    }
+}
+
+
+
+</script>
+
+
+</body>
+</html>
