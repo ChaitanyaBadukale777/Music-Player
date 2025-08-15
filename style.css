@@ -526,7 +526,7 @@ input {
   background-color: #121212;   /* same dark pill background */
   color: #fff;                 /* white text */
   font-size: 14px;             /* same font size */
-  font-weight: 00;            /* semi-bold like others */
+  font-weight: 500;            /* semi-bold like others */
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  */
   padding: 8px 18px;           /* pill padding */
   border: none;

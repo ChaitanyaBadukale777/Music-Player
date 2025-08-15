@@ -287,13 +287,6 @@ document.getElementById("loop").addEventListener("click", () => {
 initializeKeyboardShortcuts();
 
 
-document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("loginLink").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "login.html";
-        });
-    });
-
 
 // const loginBtn = document.getElementById("login-btn");
 // const authSection = document.getElementById("auth-section");

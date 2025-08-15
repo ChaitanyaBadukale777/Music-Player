@@ -32,6 +32,36 @@ body {
   animation: floatUp 12s linear infinite;
 }
 
+/* Divider line */
+        .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 15px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+        content: "";
+        flex: 1;
+        }
+
+        .divider:not(:empty)::before {
+        margin-right: 15px;
+        }
+
+        .divider:not(:empty)::after {
+        margin-left: 15px;
+        }
+
+        .divider span {
+        color: #c4c4c4;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        padding: 0 5px;
+        }
+
 @keyframes floatUp {
   0% {
     transform: translateY(100vh) rotate(0deg);

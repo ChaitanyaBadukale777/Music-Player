@@ -32,7 +32,7 @@
     </div>
 
     <form id="login-form" class="auth-form">
-  <h2>Welcome Back <br><span class="sub-text">Login to Continue</span></h2>
+  <h2>Welcome Back <br><span class="sub-text"> </span></h2>
 
   <input type="email" placeholder="Email" required />
 
@@ -44,6 +44,9 @@
 
 
   <button type="submit">Log In</button>
+    <div class="divider">
+        <span>or continue with</span>
+    </div>
   <button class="google-btn">
       <svg viewBox="0 0 44 50" xmlns="http://www.w3.org/2000/svg">
     <!-- Yellow -->
@@ -64,12 +67,12 @@
     <path fill="#1976D2"
       d="M43.611 20.083H42V20H24v8h11.303c-.9 2.5-2.5 4.5-4.224 5.904l6.07 4.964C39.91 35.862 44 30.5 44 24
          c0-1.341-.139-2.65-.389-3.917z"/>
-  </svg>
-  Continue with Google</button>
-    </form>
+      </svg>
+          Sign with Google</button>
+        </form>
 
    <form id="signup-form" class="auth-form hidden">
-  <h2>Join the Rhythm <br><span class="sub-text">Register Here</span></h2>
+      <h2>Join the Rhythm <br><span class="sub-text">Register Here</span></h2>
 
         <form id="signup-form">
         <input type="text" placeholder="Name" required />
@@ -90,14 +93,13 @@
         <p id="error-msg" style="color:red; display:none;">Passwords do not match!</p>
         <button type="submit">Register</button>
 
-        </form>
+    </form>
   </div>
 
 <script>
     // ------------------ Get all elements first ------------------
 const showLogin = document.getElementById("show-login");
 const showSignup = document.getElementById("show-signup");
-const loginForm = document.getElementById("login-form");
 const signupForm = document.getElementById("signup-form");
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
@@ -151,10 +153,41 @@ function checkPasswords() {
     }
 }
 
+</script>
+
+<script>
+  const loginForm = document.getElementById("login-form");
+
+  loginForm.addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent default form submission
+    // You can check username/password here if needed
+    window.location.href = "index.html"; // Redirect to home page
+  });
+
+
+  loginForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Get user input
+  const username = loginForm.querySelector('input[type="text"]').value;
+  const password = loginForm.querySelector('input[type="password"]').value;
+
+  // Dummy validation (replace with real validation if needed)
+  if(username && password) {
+    // Store a "logged in" flag in sessionStorage
+    sessionStorage.setItem("isLoggedIn", "true");
+
+    // Clear form fields (so credentials are not stored in the page)
+    loginForm.reset();
+
+    // Redirect and replace history (Back button won’t work)
+    window.location.replace("index.html");
+  } else {
+    alert("Please enter username and password.");
+  }
+});
 
 
 </script>
-
-
 </body>
 </html>

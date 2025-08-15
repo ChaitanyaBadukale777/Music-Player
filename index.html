@@ -39,7 +39,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> Search
           </p>
 
-
+          <p id="loginBtn">Login</p>
    
         </div>
 
@@ -246,20 +246,23 @@
           .forEach((btn) => btn.classList.remove("active"));
         activeBtn.classList.add("active");
       }
-
-
-        document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("loginLink").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "login.html";
-        });
-    });
-
-
-    
-      
     </script>
+    
+    <script>
+      // Sidebar Login Link
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarLogin = document.getElementById("sidebarLogin");
 
+        if (sidebarLogin) {
+          sidebarLogin.addEventListener("click", function (e) {
+            e.preventDefault(); // stop normal anchor behavior
+            window.location.replace("login.html"); // navigate without "Back"
+          });
+        }
+      });
+      </script>
+    
+    
 
     <script src="script.js"></script>
   </body>
